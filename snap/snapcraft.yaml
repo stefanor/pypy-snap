@@ -14,6 +14,10 @@ apps:
   pypy:
     command: bin/pypy
 
+base: core
+architectures:
+  - build-on: amd64
+
 parts:
   pypy:
     plugin: dump
