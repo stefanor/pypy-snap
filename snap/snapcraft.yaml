@@ -21,4 +21,4 @@ architectures:
 parts:
   pypy:
     plugin: dump
-    source: https://bitbucket.org/pypy/pypy/downloads/pypy2-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
+    source: https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
