@@ -27,3 +27,5 @@ parts:
     build-packages:
       - tcl-dev
       - tk-dev
+    stage-packages:
+      - ncurses-base # terminal descriptions for curses
