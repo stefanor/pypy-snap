@@ -22,3 +22,8 @@ parts:
   pypy:
     plugin: dump
     source: https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
+    override-build: |
+      snapcraftctl build
+    build-packages:
+      - tcl-dev
+      - tk-dev
