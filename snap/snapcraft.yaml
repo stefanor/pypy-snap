@@ -28,4 +28,15 @@ parts:
       - tcl-dev
       - tk-dev
     stage-packages:
-      - ncurses-base # terminal descriptions for curses
+      - libfontconfig1
+      - libtcl8.6
+      - libtk8.6
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxdmcp6
+      - libxext6
+      - libxft2
+      - libxrender1
+      - libxss1
+      - ncurses-base
