@@ -24,6 +24,8 @@ parts:
     source: https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
     override-build: |
       bin/pypy -m compileall -qx '/tests?[_/]' .
+      patch -p1 < $SNAPCRAFT_PROJECT_DIR/tcl-path.patch
+      patch -p1 < $SNAPCRAFT_PROJECT_DIR/curses-path.patch
       snapcraftctl build
     build-packages:
       - tcl-dev

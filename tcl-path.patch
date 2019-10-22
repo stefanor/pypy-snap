@@ -1,0 +1,19 @@
+diff --git a/lib_pypy/_tkinter/__init__.py b/lib_pypy/_tkinter/__init__.py
+--- a/lib_pypy/_tkinter/__init__.py
++++ b/lib_pypy/_tkinter/__init__.py
+@@ -10,6 +10,15 @@
+ class TclError(Exception):
+     pass
+ 
++# SNAP: Use bundled Tcl
++import os
++snapdir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
++if 'TCL_LIBRARY' not in os.environ:
++    os.environ['TCL_LIBRARY'] = os.path.join(snapdir, 'usr/share/tcltk/tcl8.6')
++os.environ['TCLLIBPATH'] = '{} {}/{}'.format(os.environ.get('TCLLIBPATH', ''),
++    snapdir, 'usr/share/tcltk/tcl8.6').strip()
++del snapdir
++
+ from .tklib_cffi import ffi as tkffi, lib as tklib
+ 
+ from .app import TkApp
