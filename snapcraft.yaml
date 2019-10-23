@@ -27,6 +27,7 @@ parts:
     source: nil
     source-type: tar
     override-pull: |
+      apt-get -y install wget
       case $SNAPCRAFT_ARCH_TRIPLET in
         x86_64-linux-gnu)
           arch=linux64
