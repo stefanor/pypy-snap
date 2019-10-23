@@ -17,11 +17,37 @@ apps:
 base: core
 architectures:
   - build-on: amd64
+  - build-on: arm64
+  - build-on: ppc64el
+  - build-on: s390x
 
 parts:
   pypy:
     plugin: dump
-    source: https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
+    source: nil
+    source-type: tar
+    override-pull: |
+      case $SNAPCRAFT_ARCH_TRIPLET in
+        x86_64-linux-gnu)
+          arch=linux64
+          ;;
+        aarch64-linux-gnu)
+          arch=aarch64
+          ;;
+        powerpc64le-linux-gnu)
+          arch=ppc64le
+          ;;
+        s390x-linux-gnu)
+          arch=s390x
+          ;;
+        *)
+          echo "Unknown arch: $SNAPCRAFT_ARCH_TRIPLET"
+          exit 1
+      esac
+      # Would be lovely to be able to set-source here...
+      wget "https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-$arch.tar.bz2" -O pypy.tar.bz2
+      tar --strip-components=1 -xf pypy.tar.bz2
+      rm pypy.tar.bz2
     override-build: |
       bin/pypy -m compileall -qx '/tests?[_/]' .
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/tcl-path.patch
