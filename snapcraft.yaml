@@ -1,5 +1,5 @@
 name: pypy
-version: '7.2.0'
+version: '7.3.0rc2'
 summary: PyPy is a fast, compliant alternative implementation of the Python language
 description: |
   PyPy is a replacement for CPython. It is built using the RPython language
