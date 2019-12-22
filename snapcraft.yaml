@@ -33,8 +33,17 @@ parts:
       bin/pypy -m compileall -qx '/tests?[_/]' .
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/tcl-path.patch
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/curses-path.patch
+      (cd lib_pypy
+          find . -name '*_build.py' \! -name '_pypy_winbase_build.py' | while read module; do
+              ../bin/pypy $module
+          done
+      )
       snapcraftctl build
     build-packages:
+      - libgdbm-dev
+      - libncurses-dev
+      - libsqlite3-dev
+      - libssl-dev
       - tcl-dev
       - tk-dev
     stage-packages:
