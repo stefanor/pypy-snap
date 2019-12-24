@@ -1,5 +1,5 @@
 name: pypy
-version: '7.3.0rc3'
+version: '7.3.0'
 summary: PyPy is a fast, compliant alternative implementation of the Python language
 description: |
   PyPy is a replacement for CPython. It is built using the RPython language
@@ -31,31 +31,8 @@ parts:
       - on s390x: https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-s390x.tar.bz2
     override-build: |
       bin/pypy -m compileall -qx '/tests?[_/]' .
-      patch -p1 < $SNAPCRAFT_PROJECT_DIR/tcl-path.patch
-      patch -p1 < $SNAPCRAFT_PROJECT_DIR/curses-path.patch
-      (cd lib_pypy
-          find . -name '*_build.py' \! -name '_pypy_winbase_build.py' | while read module; do
-              ../bin/pypy $module
-          done
-      )
       snapcraftctl build
-    build-packages:
-      - libgdbm-dev
-      - libncurses-dev
-      - libsqlite3-dev
-      - libssl-dev
-      - tcl-dev
-      - tk-dev
     stage-packages:
       - libfontconfig1
-      - libtcl8.6
-      - libtk8.6
-      - libx11-6
-      - libxau6
-      - libxcb1
-      - libxdmcp6
-      - libxext6
       - libxft2
       - libxrender1
-      - libxss1
-      - ncurses-base
