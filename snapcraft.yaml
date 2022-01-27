@@ -18,7 +18,6 @@ base: core
 architectures:
   - build-on: amd64
   - build-on: arm64
-  - build-on: ppc64el
   - build-on: s390x
 
 parts:
@@ -27,7 +26,6 @@ parts:
     source:
       - on amd64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
       - on arm64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-aarch64.tar.bz2
-      - on ppc64el: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-ppc64le.tar.bz2
       - on s390x: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-s390x.tar.bz2
     override-build: |
       bin/pypy -m compileall -qx '/tests?[_/]' .
