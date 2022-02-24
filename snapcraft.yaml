@@ -14,7 +14,7 @@ apps:
   pypy:
     command: bin/pypy
 
-base: core
+base: core20
 architectures:
   - build-on: amd64
   - build-on: arm64
@@ -33,5 +33,6 @@ parts:
       snapcraftctl build
     stage-packages:
       - libfontconfig1
+      - libncursesw6
       - libxft2
       - libxrender1
