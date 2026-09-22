@@ -24,9 +24,9 @@ parts:
   pypy:
     plugin: dump
     source:
-      - on amd64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.bz2
-      - on arm64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-aarch64.tar.bz2
-      - on s390x: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-s390x.tar.bz2
+      - on amd64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-linux64.tar.gz
+      - on arm64: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-aarch64.tar.gz
+      - on s390x: https://downloads.python.org/pypy/pypy2.7-v$SNAPCRAFT_PROJECT_VERSION-s390x.tar.gz
     override-build: |
       rm lib_pypy/_cffi_ssl/tools/make_ssl_data.py
       bin/pypy -m compileall -qx '/tests?[_/]' .
